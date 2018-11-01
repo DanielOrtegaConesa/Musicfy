@@ -2,10 +2,8 @@
 
 var bcrypt = require("bcrypt-nodejs");
 var User = require("../models/user");
+var g = require("../genericas");
 
-function isNullOrEmpty(dato){
-    return (dato == "" || dato == null)
-}
 
 function pruebas(req, res){
     res.status(200).send({
@@ -29,7 +27,7 @@ function saveUser(req, res){
         // encriptar contraseña
         bcrypt.hash(params.password,null,null,function(err,hash){
             user.password = hash;
-            if(!isNullOrEmpty(user.name) && !isNullOrEmpty(user.surname) && !isNullOrEmpty(user.email)){
+            if(!g.isNullOrEmpty(user.name) && !g.isNullOrEmpty(user.surname) && !g.isNullOrEmpty(user.email)){
                 // guardar el usuario
                 user.save((err, userStored) => {
                     if(err){
