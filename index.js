@@ -4,7 +4,7 @@ var mongoose = require("mongoose");
 var app = require("./app");
 var port = 3977;
 
-mongoose.connect("mongodb://localhost:27017/musicfy", (err, res) => {
+mongoose.connect("mongodb://localhost:27017/musicfy",{ useNewUrlParser: true }, (err, res) => {
     if(err){
         throw err;
     }else{
