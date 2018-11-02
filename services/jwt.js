@@ -2,7 +2,7 @@
 
 var jwt = require("jwt-simple");
 var moment = require("moment");
-var clave = "la clave mas segura del mundo!"
+var clave = "la clave mas segura del mundo!";
 
 exports.createTokern = function(user){
     var payload = {
