@@ -146,7 +146,6 @@ function uploadImage(req, res){
         }else{
             res.status(200).send({message: "Extension no valida"});
         }
-        console.log(file_path);
     }else{
         res.status(200).send({message: "No se ha subido ninguna imagen"});
     }
