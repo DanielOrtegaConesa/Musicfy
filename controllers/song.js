@@ -53,7 +53,7 @@ function getSongs(req, res){
 }
 
 function saveSong(req, res){
-	var song = newSong();
+	var song = new Song();
 
 	var params = req.body;
 	song.number = params.number;
@@ -76,8 +76,86 @@ function saveSong(req, res){
 
 }
 
+function updateSong(req, res){
+	var songId = req.params.id;
+	var update = req.body;
+
+	Song.findByIdAndUpdate(songId, update, (err, songUpdated)=>{
+		if(err){
+			res.status(500).send({message: "Error en el servidor"});	
+		}else{
+			if(!songUpdated){
+				res.status(400).send({message: "No se ha guardado la cancion"});	
+			}else{
+				res.status(200).send({song: songUpdated});	
+			}
+		}
+	});
+}
+
+function deleteSong(req, res){
+	var songId = req.params.id;
+	Song.findByIdAndRemove(songId,(err, songRemoved)=>{
+		if(err){
+			res.status(500).send({message: "Error en el servidor"});	
+		}else{
+			if(!songUpdated){
+				res.status(400).send({message: "No se ha borrado la cancion"});	
+			}else{
+				res.status(200).send({song: songRemoved});	
+			}
+		}
+	});
+}
+
+function uploadFile(req, res){
+    var songId = req.params.id;
+    var file_name = "No subido";
+    
+    if(req.files){
+        var file_path = req.files.file.path;
+        var file_split = file_path.split("\\");
+        var file_name = file_split[2];
+
+        var ext_split = file_name.split("\.");
+        var file = ext_split[0];
+        var file_ext = ext_split[1];
+
+        if(file_ext == "mp3" || file_ext == "ogg"){
+            Song.findByIdAndUpdate(songId, {file: file_name}, (err, songUpdated) => {
+                if(!songUpdated){
+                    res.status(400).send({message: "No se ha podido actualizar la cancion"});
+                }else{
+                    res.status(200).send({song: songUpdated});
+                }
+            });
+        }else{
+            res.status(200).send({message: "Extension no valida"});
+        }
+    }else{
+        res.status(200).send({message: "No se ha subido ninguna cancion"});
+    }
+}
+
+function getSongFile(req, res){
+    var songFile = req.params.file;
+	var file_path = "./uploads/songs/"+songFile;
+    fs.exists(file_path, (existe) =>{
+        if(existe){
+            res.sendFile(path.resolve(file_path));
+        }else{
+            res.status(200).send({message: "No existe el fichero de audio"});
+        }
+    });
+    
+}
+
 module.exports = {
 	getSong,
 	getSongs,
-	saveSong
+	saveSong,
+	updateSong,
+	deleteSong,
+	uploadFile,
+	getSongFile
 }
