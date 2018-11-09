@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'client';
+  title = 'Musicfy';
+  public user: User;
+  public identity;
+  public token;
+
+  constructor(){
+    this.user = new User();
+  }
 }
