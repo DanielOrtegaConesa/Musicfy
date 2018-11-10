@@ -14,6 +14,7 @@ export class AppComponent implements OnInit{
   public user: User;
   public identity;
   public token;
+  public errorMessage;
 
   constructor(
     private _userService:UserService
@@ -26,16 +27,41 @@ export class AppComponent implements OnInit{
   }
 
   public onSubmit(){
-    var texto = this._userService.singup(this.user).subscribe(
+    this._userService.singup(this.user).subscribe(
       response=>{
-        console.log(response)
+        let identity = response.user;
+        this.identity = identity;
+
+        if(!this.identity._id){
+          alert("El usuario no esta correctamente identificado");
+        }else{
+          this._userService.singup(this.user, "true").subscribe(
+            response=>{
+              console.log(response);
+              let token = response.token;
+              this.token = token;
+              // if(this.token.length <= 0){
+              //   alert("El token no se ha generado correctamente");
+              // }else{
+              //   console.log(token);
+              //   console.log(identity);
+              // }
+            },
+            error =>{
+              var errorMessage = <any>error;
+              if(errorMessage != null){
+                var body = JSON.parse(error._body);
+                this.errorMessage=body.message;
+              }
+            });
+        }
       },
       error =>{
         var errorMessage = <any>error;
         if(errorMessage != null){
-          console.log(error);
+          var body = JSON.parse(error._body);
+          this.errorMessage=body.message;
         }
       });
-      console.log(texto);
   }
 }

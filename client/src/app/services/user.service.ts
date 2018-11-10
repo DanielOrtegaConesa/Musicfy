@@ -13,10 +13,13 @@ export class UserService{
     };
 
     singup(user_to_login, gethash = null){
-     let params = JSON.stringify(user_to_login);
-     
-     let headers = new Headers({"Content-Type":"application/json"});
+        if(gethash != null){
+            user_to_login.gethash = gethash;
+        }
+        let params = JSON.stringify(user_to_login);
+        
+        let headers = new Headers({"Content-Type":"application/json"});
 
-     return this._http.post(this.url+"login", params, {headers: headers}).pipe(map(res => res.json()));
+        return this._http.post(this.url+"login", params, {headers: headers}).pipe(map(res => res.json()));
     }
 }
