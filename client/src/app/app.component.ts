@@ -40,12 +40,12 @@ export class AppComponent implements OnInit{
               console.log(response);
               let token = response.token;
               this.token = token;
-              // if(this.token.length <= 0){
-              //   alert("El token no se ha generado correctamente");
-              // }else{
-              //   console.log(token);
-              //   console.log(identity);
-              // }
+              if(this.token.length <= 0){
+                alert("El token no se ha generado correctamente");
+              }else{
+                console.log(token);
+                console.log(identity);
+              }
             },
             error =>{
               var errorMessage = <any>error;
