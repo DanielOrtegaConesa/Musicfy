@@ -23,39 +23,42 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
-    
+    this.identity = this._userService.getIdentity();
+    this.token = this._userService.getToken();
   }
 
   public onSubmit(){
     this._userService.singup(this.user).subscribe(
+
       response=>{
         let identity = response.user;
         this.identity = identity;
 
         if(!this.identity._id){
-          alert("El usuario no esta correctamente identificado");
+          this.errorMessage = "El usuario no esta correctamente identificado";
         }else{
+          localStorage.setItem("identity", JSON.stringify(identity));
           this._userService.singup(this.user, "true").subscribe(
-            response=>{
-              console.log(response);
+            response => {
               let token = response.token;
               this.token = token;
               if(this.token.length <= 0){
-                alert("El token no se ha generado correctamente");
+                this.errorMessage= "El token no se ha generado correctamente";
               }else{
-                console.log(token);
-                console.log(identity);
+                localStorage.setItem("token", JSON.stringify(token));
               }
             },
             error =>{
               var errorMessage = <any>error;
               if(errorMessage != null){
                 var body = JSON.parse(error._body);
-                this.errorMessage=body.message;
+                this.errorMessage = body.message;
               }
             });
+
         }
       },
+
       error =>{
         var errorMessage = <any>error;
         if(errorMessage != null){

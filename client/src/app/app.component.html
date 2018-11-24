@@ -12,11 +12,11 @@
     <div *ngIf="errorMessage" class="alert alert-info" role="alert">
       {{errorMessage}}
     </div>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit()"> 
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate> 
       <div>
         <label>Correo electronico</label>
-        <input type="text" #email="ngModel" name="email" [(ngModel)]="user.email" class="form-control" required>
-        <span *ngIf="!email.valid && email.touched">El email no es valido</span>
+        <input type="email" #email="ngModel" name="email" [(ngModel)]="user.email" class="form-control" required>
+        <span *ngIf="!email.valid && email.touched">El email es obligatorio</span>
       </div>
       <div>
         <label>Contraseña</label>
