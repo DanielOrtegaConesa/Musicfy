@@ -12,6 +12,7 @@ import { TouchSequence } from 'selenium-webdriver';
 export class AppComponent implements OnInit{
   title = 'Musicfy';
   public user: User;
+  public user_register: User;
   public identity;
   public token;
   public errorMessage;
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit{
     private _userService:UserService
   ){
     this.user = new User();
+    this.user_register = new User();
   }
 
   ngOnInit(){
@@ -66,5 +68,9 @@ export class AppComponent implements OnInit{
           this.errorMessage=body.message;
         }
       });
+  }
+  
+  public onSubmitRegister(){
+    console.log(this.user_register);
   }
 }
