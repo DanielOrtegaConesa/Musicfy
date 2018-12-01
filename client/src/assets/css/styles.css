@@ -1,3 +1,7 @@
 body{
     background: #eee;
 }
+
+form input+span{
+color: #e57373 ;
+}
