@@ -71,6 +71,35 @@ export class AppComponent implements OnInit{
   }
   
   public onSubmitRegister(){
-    console.log(this.user_register);
+    this._userService.register(this.user_register).subscribe(
+      response => {
+        let user = response.user;
+        this.user_register = user;
+
+        if(!user._id){
+          this.errorMessage = "Error al registrarse";
+        }else{
+          this.errorMessage = false;
+          this.user_register = new User();
+        }
+      },
+      error => {
+        var errorMessage = <any>error;
+        if(errorMessage != null){
+          var body = JSON.parse(error._body);
+          this.errorMessage = body.message;
+        }
+      }
+    );
+  }
+
+  public logout(){
+    localStorage.removeItem("identity");
+    localStorage.removeItem("token");
+    this.identity = null;
+    this.token = null;
+    
+    this.user = new User();
+    this.user_register = new User();
   }
 }

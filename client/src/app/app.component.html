@@ -4,17 +4,18 @@
     <h1>{{title}}</h1>
     <div class="clearfix"></div>
     <p>Estas logueado en la aplicacion</p>
+    <a class="waves-effect waves-light btn" (click)="logout()">Cerrar sesion</a>
   </div>
 </div>
 
 
 <div *ngIf="!identity" class="row container">
+  <div *ngIf="errorMessage" class="card-panel red lighten-3 col s12">
+    {{errorMessage}}
+  </div>
 
   <div class="col s12 m6">
     <h1 class="center-align">Identificate</h1>
-    <div *ngIf="errorMessage" class="alert alert-info" role="alert">
-      {{errorMessage}}
-    </div>
     <form #loginForm="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate> 
       <div>
         <label>Correo electronico</label>
@@ -33,7 +34,7 @@
   
   <div class="col s12 m6">
     <h1 class="center-align">Registrate</h1>
-    <form #registerForm="ngForm" (ngSubmit)="onSubmitRegister()"> 
+    <form #registerForm="ngForm" (ngSubmit)="onSubmitRegister()" ngNativeValidate> 
       <div>
         <label>Nombre</label>
         <input type="text" #name="ngModel" name="name" [(ngModel)]="user_register.name" required>

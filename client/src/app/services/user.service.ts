@@ -34,4 +34,12 @@ export class UserService{
         this.token = JSON.parse(localStorage.getItem("token"));
         return this.token;
     }
+
+    register(user_to_register){
+        let params = JSON.stringify(user_to_register);
+        
+        let headers = new Headers({"Content-Type":"application/json"});
+
+        return this._http.post(this.url+"register", params, {headers: headers}).pipe(map(res => res.json()));
+    }
 }
