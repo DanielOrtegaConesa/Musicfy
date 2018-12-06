@@ -1,5 +1,46 @@
 <div class="row">
-  <div class="col s1">
-aaaaaaaaa
-  </div>
+
+    <div *ngIf="error">
+        <div *ngIf="alertMessage" class="card-panel red lighten-1 col s12">
+            {{alertMessage}}
+          </div>
+    </div>
+    <div *ngIf="!error && alertMessage">
+        <div *ngIf="alertMessage" class="card-panel green lighten-1 col s12">
+            {{alertMessage}}
+          </div>
+    </div>
+    
+
+  <form #userUpdateForm="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate> 
+    <div>
+      <label>Nombre</label>
+      <input type="text" #name="ngModel" name="name" [(ngModel)]="user.name" required>
+      <span *ngIf="!name.valid && name.touched">El nombre es obligatorio</span>
+    </div>
+    <div>
+      <label>Apellidos</label>
+      <input type="text" #surname="ngModel" name="surname" [(ngModel)]="user.surname" required>
+      <span *ngIf="!surname.valid && surname.touched">Los apellidos son obligatorios</span>
+    </div>
+    <div>
+      <label>Correo electronico</label>
+      <input type="email" #email="ngModel" name="email" [(ngModel)]="user.email" required>
+      <span *ngIf="!email.valid && email.touched">El email es obligatorio</span>
+    </div>
+    
+    <form action="#">
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Foto</span>
+          <input type="file" (change)="fileChange($event)">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+    </form>
+
+    <input type="submit" value="Actualizar mis datos" class="btn btn-primary">
+  </form>
  </div>
