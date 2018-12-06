@@ -17,10 +17,10 @@ app.use(bodyParser.json());
 // configurar cabeceras http
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-    res.header("Access-Control-Allow", "GET, POST, OPTIONS, PUT, DELETE")
+    res.header("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
+    res.header("Access-Control-Allow", "GET, POST, OPTIONS, PUT, DELETE, PATCH, OPTIONS")
     res.header("Allow", "GET, POST, OPTIONS, PUT, DELETE");
-
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');    
     next();
 });
 // rutas base
