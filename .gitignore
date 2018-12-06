@@ -1,5 +1,5 @@
 
-uploads/users/*
-uploads/artists/*
-uploads/albums/*
-uploads/songs/*
+api/uploads/users/*
+api/uploads/artists/*
+api/uploads/albums/*
+api/uploads/songs/*
