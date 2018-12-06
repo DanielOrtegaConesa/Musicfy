@@ -7,8 +7,8 @@ import { UserService } from "./services/user.service";
 
 const appRoutes: Routes = [
     {path: "", component: UserEditComponent},
-    {path: "mis-datos", component: UserService},
-    {path: "**", component: UserService}
+    {path: "mis-datos", component: UserEditComponent},
+    {path: "**", component: UserEditComponent}
 ];
 
 export const AppRoutingProviders: any[] = [];
