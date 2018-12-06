@@ -44,7 +44,7 @@ export class UserService{
         return this._http.post(this.url+"register", params, {headers: headers}).pipe(map(res => res.json()));
     }
 
-    update_user(user_to_update:User){
+    updateUser(user_to_update:User){
         let params = JSON.stringify(user_to_update);        
         let headers = new Headers({
             "Content-Type":"application/json",
