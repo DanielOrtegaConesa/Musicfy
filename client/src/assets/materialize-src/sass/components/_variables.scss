@@ -34,11 +34,11 @@
 // 1. Colors
 // ==========================================================================
 
-$primary-color: color("blue", "darken-2") !default;
+$primary-color: color("green", "darken-1") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
-$secondary-color: color("purple", "lighten-1") !default;
+$secondary-color: #404040 !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;
@@ -164,7 +164,7 @@ $dropdown-item-height: 50px !default;
 
 // Text Inputs + Textarea
 $input-height: 3rem !default;
-$input-border-color: rgb(128, 153, 179) !default;
+$input-border-color: $primary-color !default;
 $input-border: 1px solid $input-border-color !default;
 $input-background: #fff !default;
 $input-error-color: $error-color !default;
@@ -246,8 +246,8 @@ $navbar-height: 64px !default;
 $navbar-line-height: $navbar-height !default;
 $navbar-height-mobile: 56px !default;
 $navbar-line-height-mobile: $navbar-height-mobile !default;
-$navbar-font-size: 1rem !default;
-$navbar-font-color: #fff !default;
+$navbar-font-size: 1.2em !default;
+$navbar-font-color: $secondary-color !default;
 $navbar-brand-font-size: 2.1rem !default;
 
 // 14. Side Navigation

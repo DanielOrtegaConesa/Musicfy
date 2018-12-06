@@ -5,3 +5,10 @@ body{
 form input+span{
 color: #e57373 ;
 }
+
+*{
+    word-wrap: break-word;
+}
+.ovweflow-x {
+    overflow-x: auto;
+}
