@@ -15,12 +15,14 @@ export class UserEditComponent implements OnInit {
   public alertMessage
   public error;
   public filesToUpload: Array<File>;
+  public url;
 
   constructor(
     private _userService: UserService
   ) {
     this.titulo = "Actualizar mis datos"
     this.user = this._userService.getIdentity();
+    this.url = Global.url;
    }
 
   ngOnInit() {
@@ -39,13 +41,12 @@ export class UserEditComponent implements OnInit {
             
           }else{
             this.makeFileRequest(
-              Global.url+"upload-image-user/"+this.user._id,
+              this.url+"upload-image-user/"+this.user._id,
               [],
               this.filesToUpload).then(
                 (result: any) => {
                   this.user.image = result.image;                  
                   localStorage.setItem("identity", JSON.stringify(this.user));
-                  console.log(this.user);
                 }
               );
           }
@@ -63,9 +64,7 @@ export class UserEditComponent implements OnInit {
   }
 
   fileChange(fileInput: any){
-    console.log(fileInput);
     this.filesToUpload = <Array<File>>fileInput.target.files;
-    console.log(this.filesToUpload);
   }
 
   makeFileRequest(url: string, params: Array<string>, files: Array<File>){
