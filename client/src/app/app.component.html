@@ -1,34 +1,43 @@
 
-<div class="row">
-  <div *ngIf="identity">
-    
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">Logo</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-          <li><a >Buscar</a></li>
-          <li><a>Artistas</a></li>
-          <li><a >Albums</a></li>
-          <li><a [routerLink]="['/mis-datos']">Mis datos</a></li>
-        </ul>
-      </div>
-    </nav>
-  
-    <ul class="sidenav" id="mobile-demo">
-      <li><a >Buscar</a></li>
-      <li><a ><i class="material-icons">stars</i>Artistas</a></li>
-      <li><a >Albums</a></li>
-      <li><a [routerLink]="['/mis-datos']">Mis datos</a></li>
-    </ul>
+<div *ngIf="identity">
 
-    <div class="container">
-        <p>Estas logueado en la aplicacion</p>
-        <a class="waves-effect waves-light btn" (click)="logout()">Cerrar sesion</a>
-        <router-outlet></router-outlet>
+  <nav class="hide-on-large-only">
+    <div class="nav-wrapper">
+    <a href="#" data-target="nav-mobile" class="sidenav-trigger full hide-on-large-only black-text"><i class="material-icons">menu</i></a>
+      <a href="#!" class="brand-logo center">{{title}}</a>
     </div>
+  </nav>
+
+  <ul id="nav-mobile" class="sidenav sidenav-fixed">
+    <li class="bold">
+      <a [routerLink]="['/']" class="head-title green-text text-darken-1 sidenav-close"><i class="material-icons">music_note</i>{{title}}</a>
+    </li>
     
-  </div>
+    <li class="bold">
+      <a class="sidenav-close"><i class="material-icons">search</i>Buscar</a>
+    </li>
+
+    <li class="bold">
+      <a class="sidenav-close"><i class="material-icons">stars</i>Artistas</a>
+    </li>
+
+    <li class="bold">
+      <a class="sidenav-close"><i class="material-icons">book</i>Albums</a>
+    </li>
+
+    <div class="divider"></div>
+    <li class="bold">
+      <a class="sidenav-close" [routerLink]="['/mis-datos']"><i class="material-icons">build</i>Mis datos</a>
+    </li>
+
+    <li class="bold">
+      <a class="sidenav-close" href="#" (click)="logout()"><i class="material-icons">close</i>Cerrar sesion</a>
+    </li>
+  </ul>
+  
+  <main class="container">
+    <router-outlet></router-outlet>
+  </main>
 </div>
 
 

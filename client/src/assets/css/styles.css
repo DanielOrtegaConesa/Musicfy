@@ -12,3 +12,19 @@ color: #e57373 ;
 .ovweflow-x {
     overflow-x: auto;
 }
+
+.head-title{
+    font-size: 20px !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+}
+
+header, main, footer {
+    padding-left: 300px;
+}
+
+@media only screen and (max-width: 992px){
+    header, main, footer {
+        padding-left: 0;
+    }
+}
