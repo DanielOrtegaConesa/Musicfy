@@ -4,7 +4,7 @@
   <nav class="hide-on-large-only">
     <div class="nav-wrapper">
     <a href="#" data-target="nav-mobile" class="sidenav-trigger full hide-on-large-only black-text"><i class="material-icons">menu</i></a>
-      <a href="#!" class="brand-logo center">{{title}}</a>
+      <a id="titulonav" [routerLink]="['/']" class="brand-logo center head-title">{{title}}</a>
     </div>
   </nav>
 
@@ -14,20 +14,20 @@
     </li>
     
     <li class="bold">
-      <a class="sidenav-close"><i class="material-icons">search</i>Buscar</a>
+      <a class="sidenav-close" [routerLinkActive]="['active']"><i class="material-icons">search</i>Buscar</a>
     </li>
 
     <li class="bold">
-      <a class="sidenav-close"><i class="material-icons">stars</i>Artistas</a>
+      <a [routerLink]="['/artists',1]" [routerLinkActive]="['active']" class="sidenav-close"><i class="material-icons">stars</i>Artistas</a>
     </li>
 
     <li class="bold">
-      <a class="sidenav-close"><i class="material-icons">book</i>Albums</a>
+      <a class="sidenav-close" [routerLinkActive]="['active']"><i class="material-icons">book</i>Albums</a>
     </li>
 
     <div class="divider"></div>
     <li class="bold">
-      <a class="sidenav-close" [routerLink]="['/mis-datos']"><i class="material-icons">build</i>Mis datos</a>
+      <a class="sidenav-close" [routerLink]="['/mis-datos']" [routerLinkActive]="['active']"><i class="material-icons">build</i>Mis datos</a>
     </li>
 
     <li class="bold">

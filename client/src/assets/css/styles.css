@@ -19,8 +19,16 @@ color: #e57373 ;
     text-transform: uppercase !important;
 }
 
+#titulonav{
+    font-size: 30px !important;
+}
+
 header, main, footer {
     padding-left: 300px;
+}
+
+.active{
+    color: #43a047 !important; 
 }
 
 @media only screen and (max-width: 992px){
