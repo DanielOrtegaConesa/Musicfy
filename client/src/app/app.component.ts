@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from './models/user';
 import {UserService} from "./services/user.service";
 import { TouchSequence } from 'selenium-webdriver';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -18,7 +20,9 @@ export class AppComponent implements OnInit{
   public errorMessage;
 
   constructor(
-    private _userService:UserService
+    private _userService:UserService,
+    private _route: ActivatedRoute,
+    private _router: Router,
   ){
     this.user = new User();
     this.user_register = new User();
@@ -101,5 +105,6 @@ export class AppComponent implements OnInit{
     
     this.user = new User();
     this.user_register = new User();
+    this._router.navigate(["/"]);
   }
 }
