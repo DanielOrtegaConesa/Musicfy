@@ -1,9 +1,8 @@
-
 <div *ngIf="identity">
 
   <nav class="hide-on-large-only">
     <div class="nav-wrapper">
-    <a href="#" data-target="nav-mobile" class="sidenav-trigger full hide-on-large-only black-text"><i class="material-icons">menu</i></a>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger full hide-on-large-only black-text"><i class="material-icons">menu</i></a>
       <a id="titulonav" [routerLink]="['/']" class="brand-logo center head-title">{{title}}</a>
     </div>
   </nav>
@@ -12,13 +11,13 @@
     <li class="bold">
       <a [routerLink]="['/']" class="head-title green-text text-darken-1 sidenav-close"><i class="material-icons">music_note</i>{{title}}</a>
     </li>
-    
+
     <li class="bold">
       <a class="sidenav-close" [routerLinkActive]="['active']"><i class="material-icons">search</i>Buscar</a>
     </li>
 
     <li class="bold">
-      <a [routerLink]="['/artists',1]" [routerLinkActive]="['active']" class="sidenav-close"><i class="material-icons">stars</i>Artistas</a>
+      <a [routerLink]="['/artistas',1]" [routerLinkActive]="['active']" class="sidenav-close"><i class="material-icons">stars</i>Artistas</a>
     </li>
 
     <li class="bold">
@@ -27,14 +26,15 @@
 
     <div class="divider"></div>
     <li class="bold">
-      <a class="sidenav-close" [routerLink]="['/mis-datos']" [routerLinkActive]="['active']"><i class="material-icons">build</i>Mis datos</a>
+      <a class="sidenav-close" [routerLink]="['/mis-datos']" [routerLinkActive]="['active']"><i class="material-icons">build</i>Mis
+        datos</a>
     </li>
 
     <li class="bold">
       <a class="sidenav-close" href="#" (click)="logout()"><i class="material-icons">close</i>Cerrar sesion</a>
     </li>
   </ul>
-  
+
   <main class="container">
     <router-outlet></router-outlet>
   </main>
@@ -48,7 +48,7 @@
 
   <div class="col s12 m6">
     <h1 class="center-align">Identificate</h1>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate> 
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
       <div>
         <label>Correo electronico</label>
         <input type="email" #email="ngModel" name="email" [(ngModel)]="user.email" required>
@@ -59,14 +59,14 @@
         <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" required>
         <span *ngIf="!password.valid && password.touched">La contraseña es obligatoria</span>
       </div>
-      
+
       <input type="submit" value="Entrar" class="btn btn-primary">
     </form>
   </div>
-  
+
   <div class="col s12 m6">
     <h1 class="center-align">Registrate</h1>
-    <form #registerForm="ngForm" (ngSubmit)="onSubmitRegister()" ngNativeValidate> 
+    <form #registerForm="ngForm" (ngSubmit)="onSubmitRegister()" ngNativeValidate>
       <div>
         <label>Nombre</label>
         <input type="text" #name="ngModel" name="name" [(ngModel)]="user_register.name" required>
@@ -87,7 +87,7 @@
         <input type="password" #passwordR="ngModel" name="passwordR" [(ngModel)]="user_register.password" required>
         <span *ngIf="!passwordR.valid && passwordR.touched">La contraseña es obligatoria</span>
       </div>
-      
+
       <input type="submit" value="Registrarse" class="btn btn-primary">
     </form>
   </div>

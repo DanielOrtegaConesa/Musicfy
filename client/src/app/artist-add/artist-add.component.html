@@ -1,0 +1,17 @@
+<h1>{{titulo}}</h1>
+<form #formArtist="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+    <div class="input-field col s12">
+        <input #name="ngModel" [(ngModel)]="artist.name" required id="Nombre" name="Nombre" type="text" class="validate">
+        <label for="Nombre" class="active">Nombre</label>
+    </div>
+
+    <div class="input-field col s12">
+        <textarea #description="ngModel" [(ngModel)]="artist.description" required name="description" id="description"
+            class="materialize-textarea validate"></textarea>
+        <label for="description">Descipcion</label>
+    </div>
+
+    <button class="btn waves-effect waves-light" type="submit" name="action" [disabled]="!formArtist.form.valid">{{titulo}}
+        <i class="material-icons right">send</i>
+    </button>
+</form>
