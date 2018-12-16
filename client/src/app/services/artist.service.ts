@@ -17,9 +17,8 @@ export class ArtistService{
         let params = JSON.stringify(artist);
         let headers = new Headers({
             "Content-Type" : "application/json",
-            "Authorizarion" : token
+            "Authorization" : token
         });
-
         return this._http.post(this.url + "artist", params, { headers: headers }).pipe(map(res => res.json()));
     }
 }

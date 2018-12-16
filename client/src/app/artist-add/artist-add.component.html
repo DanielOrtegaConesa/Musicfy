@@ -1,4 +1,14 @@
 <h1>{{titulo}}</h1>
+<div *ngIf="error">
+    <div *ngIf="alertMessage" class="card-panel red lighten-1 col s12">
+        {{alertMessage}}
+    </div>
+</div>
+<div *ngIf="!error && alertMessage">
+    <div *ngIf="alertMessage" class="card-panel green lighten-1 col s12">
+        {{alertMessage}}
+    </div>
+</div>
 <form #formArtist="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
     <div class="input-field col s12">
         <input #name="ngModel" [(ngModel)]="artist.name" required id="Nombre" name="Nombre" type="text" class="validate">

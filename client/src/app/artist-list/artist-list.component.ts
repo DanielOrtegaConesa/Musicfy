@@ -24,7 +24,7 @@ export class ArtistListComponent implements OnInit {
     private _userService: UserService) {
       this.titulo = "Artistas";
       this.identity = this._userService.getIdentity();
-      this.token = this._userService.getIdentity();
+      this.token = this._userService.getToken();
       this.url = Global.url;
     }
 

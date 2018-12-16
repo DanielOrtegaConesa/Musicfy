@@ -63,7 +63,7 @@ function saveArtist(req, res){
             if(!artistStored){
                 res.status(400).send({message: "El artista no ha sido guardado"});
             }else{
-                res.status(200).send({aritst: artistStored});
+                res.status(200).send({artist: artistStored});
             }
         }
     });
