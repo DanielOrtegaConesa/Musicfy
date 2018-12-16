@@ -3,7 +3,9 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Global } from "../services/global";
 import { UserService } from "../services/user.service";
+import { ArtistService } from "../services/artist.service";
 import { Artist } from "../models/artist";
+
 @Component({
   selector: 'artist-add',
   templateUrl: './artist-add.component.html',
@@ -19,7 +21,9 @@ export class ArtistAddComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _userService: UserService) {
+    private _userService: UserService,
+    private _artistService: ArtistService
+    ){
     this.titulo = "Crear nuevo artista";
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getIdentity();
@@ -29,6 +33,10 @@ export class ArtistAddComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onSubmit(){
+    console.log(this.artist);
   }
 
 }
